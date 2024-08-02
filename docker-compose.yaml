@@ -1,0 +1,47 @@
+# cada serviço representa um container
+services:
+  database:
+    platform: linux/amd64
+    build: 
+      context: ./
+    image: borathiago/mysql:prod
+    container_name: database
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=node
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - ciaonetwork
+  app:
+    build: 
+      context: ./node
+    image: borathiago/app:prod
+    container_name: app
+    entrypoint: dockerize -wait tcp://database:3306 -timeout 25s docker-entrypoint.sh
+    command: "node index.js"
+    networks:
+      - ciaonetwork
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    depends_on:
+      - database
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    image: borathiago/nginx:prod
+    container_name: nginx
+    networks:
+      - ciaonetwork
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+      - app
+networks:
+  ciaonetwork:
+    driver: bridge
