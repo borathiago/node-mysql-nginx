@@ -1,5 +1,5 @@
 {
-  "name": "node-nginx-mysql-app",
+  "name": "nginx-mysql-app",
   "version": "2.0.0",
   "description": "Nginx as reverse proxy for Node",
   "main": "index.js",
@@ -11,5 +11,6 @@
   "dependencies": {
     "express": "^4.19.2",
     "mysql": "^2.18.1"
-  }
+  },
+  "keywords": []
 }
