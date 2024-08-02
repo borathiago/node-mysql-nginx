@@ -20,15 +20,17 @@ services:
       context: ./node
     image: borathiago/app:prod
     container_name: app
-    entrypoint: dockerize -wait tcp://database:3306 -timeout 25s docker-entrypoint.sh
+    entrypoint: dockerize -wait tcp://database:3306 -timeout 50s docker-entrypoint.sh
     command: "node index.js"
     networks:
       - ciaonetwork
     volumes:
       - ./node:/usr/src/app
+      - /usr/src/app/node_modules
     tty: true
     depends_on:
       - database
+      - nginx
   nginx:
     build:
       context: ./nginx
@@ -41,7 +43,6 @@ services:
       - "8080:80"
     depends_on:
       - database
-      - app
 networks:
   ciaonetwork:
     driver: bridge
