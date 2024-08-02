@@ -11,8 +11,8 @@ const config = {
 let name = ''
 let names = ''
 function createname() {
-    const firstname = ['Galáxia','Sol','Terra','Nuvem','Planta','Pedra','Mato']
-    const secondname = ['Frio','Quente','Rosa','Amargo','Liso','Verde','Seco']
+    const firstname = ['Thiago','Victor','Gustavo','Ricardo','Jorge','Luiz','Marcos']
+    const secondname = ['Marques','Bora','Rosa','Nogueira','Amado','Santos','Carvalho']
     let randomfirst = Math.floor(Math.random()*firstname.length)
     let randomsecond = Math.floor(Math.random()*secondname.length)
     return name = `${firstname[randomfirst]} ${secondname[randomsecond]}`

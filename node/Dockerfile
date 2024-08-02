@@ -1,10 +1,7 @@
-FROM node:20
+FROM node:latest as starter
 WORKDIR /usr/src/app
-COPY package.json .
-COPY package-lock.json .
-RUN npm init -y
+COPY package*.json ./
 RUN npm install
-#VOLUME /node_modules
 COPY . .
 ENV DOCKERIZE_VERSION v0.7.0
 RUN apt-get update \
