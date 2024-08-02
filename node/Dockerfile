@@ -1,8 +1,6 @@
 FROM node:20
 WORKDIR /usr/src/app
 COPY package.json .
-RUN npm init -y \
-    && npm install
 COPY . .
 ENV DOCKERIZE_VERSION v0.7.0
 RUN apt-get update \
