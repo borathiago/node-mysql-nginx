@@ -21,7 +21,7 @@ services:
     image: borathiago/app:prod
     container_name: app
     entrypoint: dockerize -wait tcp://database:3306 -timeout 50s docker-entrypoint.sh
-    command: "npm init -y & npm install & node index.js"
+    command: "node index.js"
     networks:
       - ciaonetwork
     volumes:
