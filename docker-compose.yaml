@@ -23,8 +23,8 @@ services:
     entrypoint: dockerize -wait tcp://database:3306 -timeout 50s docker-entrypoint.sh
     command: "npm start"
     volumes:
+      - node_modules:/usr/src/app/node_modules
       - ./node:/usr/src/app
-      - ./node/dev:/usr/src/app/dev
     tty: true
     networks:
       - ciaonetwork
@@ -45,3 +45,5 @@ services:
 networks:
   ciaonetwork:
     driver: bridge
+volumes:
+  node_modules:
