@@ -2,7 +2,7 @@ FROM --platform=linux/amd64 node:lts-buster as starter
 WORKDIR /usr/src/app
 COPY package*.json .
 RUN npm install --no-optional && npm cache clean --force
-ENV PATH /src/app/node_modules/.bin:$PATH
+ENV PATH /src/usr/app/node_modules/.bin:$PATH
 ENV DOCKERIZE_VERSION v0.7.0
 RUN apt-get update \
     && apt-get install -y wget \
