@@ -4,5 +4,6 @@
 
 <p align="center">🪄</p>
 <h4 align="center">Instalação</h4>
+<p align="center">Comandos obrigatórios (sem isso a pasta node_modules não é instalada corretamente)</p>
 
-<p align="center"><code>docker compose up -d</code></p>
+<p align="center"><code>docker compose run app npm install && docker compose up</code></p>
