@@ -1,6 +1,6 @@
 {
   "name": "nginx-mysql-app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Nginx as reverse proxy for Node",
   "main": "index.js",
   "scripts": {

@@ -1,4 +1,4 @@
-# cada serviço representa um container
+version: '3'
 services:
   database:
     platform: linux/amd64
@@ -22,11 +22,12 @@ services:
     container_name: app
     entrypoint: dockerize -wait tcp://database:3306 -timeout 50s docker-entrypoint.sh
     command: "npm start"
-    networks:
-      - ciaonetwork
     volumes:
       - ./node:/usr/src/app
+      - ./node/node_modules:/usr/src/app/node_modules
     tty: true
+    networks:
+      - ciaonetwork
     depends_on:
       - database
   nginx:

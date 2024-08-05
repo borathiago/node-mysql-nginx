@@ -1,7 +1,8 @@
 const express = require('express')
 const mySQL = require('mysql')
 const app = express()
-const port = 3004
+const PORT = 3004
+const HOST = '0.0.0.0'
 const config = {
     host: 'database',
     user: 'root',
@@ -31,6 +32,4 @@ app.get('/', (_request, response) => {
     response.send(`<h1>Welcome</h1><br><div>${names}</div>`)
 })
 
-app.listen(port, () => {
-    console.log(`⑆ Rodando na porta ${port}`)
-})
+app.listen(PORT, HOST)
